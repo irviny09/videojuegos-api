@@ -46,19 +46,20 @@ public class ApiController {
         @RequestParam("activo") Boolean activo,
         @RequestParam("categorias") String categorias,
         @RequestParam("plataformas") String plataformas,
+        @RequestParam("imagen") MultipartFile imagenFile,
         @RequestParam("trailer") String trailerUrl
     ) {
         try {
-            // String rutaCarpeta = System.getProperty("user.dir") + "/src/main/resources/static/uploads/";
-            // File carpeta = new File(rutaCarpeta);
-            // if(!carpeta.exists()) carpeta.mkdir();
-            // String nombreArchivo = System.currentTimeMillis() + "_" + imagenFile.getOriginalFilename();
-            // Path rutaCompleta = Paths.get(rutaCarpeta + nombreArchivo);
-            // Files.write(rutaCompleta, imagenFile.getBytes());
-            // String urlImagen = "/uploads/" + nombreArchivo;
+            String rutaCarpeta = System.getProperty("user.dir") + "/src/main/resources/static/uploads/";
+            File carpeta = new File(rutaCarpeta);
+            if(!carpeta.exists()) carpeta.mkdir();
+            String nombreArchivo = System.currentTimeMillis() + "_" + imagenFile.getOriginalFilename();
+            Path rutaCompleta = Paths.get(rutaCarpeta + nombreArchivo);
+            Files.write(rutaCompleta, imagenFile.getBytes());
+            String urlImagen = "/uploads/" + nombreArchivo;
 
             Date fechaLanzamiento = Date.valueOf(fechaLanzamientoStr);
-            videojuegosRepository.sp_createNewGame(titulo, desarrolladoresId, fechaLanzamiento, descripcion, esbrId, precio, requisitos, activo, categorias, plataformas, "/uploads/prueba", trailerUrl);
+            videojuegosRepository.sp_createNewGame(titulo, desarrolladoresId, fechaLanzamiento, descripcion, esbrId, precio, requisitos, activo, categorias, plataformas, urlImagen, trailerUrl);
             return "pelicula agregada correctamente";
         } catch (Exception e) {
             return "Error al agregar videojuego: " + e.getMessage();
