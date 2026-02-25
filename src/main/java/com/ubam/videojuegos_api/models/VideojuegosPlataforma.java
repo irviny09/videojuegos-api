@@ -1,5 +1,6 @@
 package com.ubam.videojuegos_api.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -11,8 +12,10 @@ import jakarta.persistence.JoinColumn;
 @Entity
 @Table(name = "tbl_rel_videojuegos_plataforma")
 public class VideojuegosPlataforma {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "VideojuegosPlataformaId")
     private int id;
 
     @ManyToOne

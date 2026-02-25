@@ -14,6 +14,7 @@ public class Plataformas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PlataformasId")
     private int id;
 
     @Column(name = "Plataformas_Nombre", length = 50, nullable = false)

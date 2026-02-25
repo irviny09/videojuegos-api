@@ -1,5 +1,6 @@
 package com.ubam.videojuegos_api.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ public class VideojuegosCategoria {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "VideojuegosCategoriaId")
     private int id;
 
     @ManyToOne

@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 public class Esbr {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "EsbrId")
     private int id;
 
     @Column(name = "Esbr_Esbr", length = 45, nullable = false)

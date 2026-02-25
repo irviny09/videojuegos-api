@@ -13,6 +13,7 @@ public class Multimedia {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MultimediaId")
     private int id;
 
     @Column(name = "Multimedia_ImagenURL", length = 200, nullable = false)

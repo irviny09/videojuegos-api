@@ -18,6 +18,7 @@ public class Videojuegos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "VideojuegosId")
     private int id;
 
     @Column(name = "Videojuegos_Titulo", length = 80, nullable = false)
@@ -45,4 +46,9 @@ public class Videojuegos {
 
     @Column(name = "Videojuegos_Activo", nullable = false)
     private boolean activo;
+
+    @ManyToOne
+    @JoinColumn(name = "Videojuegos_MultimediaId", nullable = false)
+    private Multimedia multimedia;
+    
 }

@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CategoriaId")
     private int id;
 
     @Column(name = "Clasificacion_Nombre", length = 45, nullable = false)
