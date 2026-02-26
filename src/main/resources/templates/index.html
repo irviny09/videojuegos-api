@@ -1,121 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <title>CRUD Videojuegos | API</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+	<title>CRUD Videojuegos | API</title>
 </head>
+
 <body>
-    <header>
+	<header>
 
-    </header>
-    <main>
-        <div class="container py-5">
-            <div class="dashboard-wrapper">
-                <ul class="nav nav-tabs mb-4">
-                    <li class="nav-item">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#registrar">
-                            Registrar Videojuegos
-                        </button>
-										</li>
-										<li class="nav-item">
-												<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#mostrar">
-														Mostrar Videojuegos
-											</button>
-                    </li>
-                </ul>
-            </div>
+	</header>
+	<div class="container py-5">
+		<div class="dashboard-wrapper">
+			<ul class="nav nav-tabs mb-4" id="Mytabs" role="tablist">
+				<li class="nav-item" role="presentation">
+					<button class="nav-link active" id="registrar-tab" data-bs-toggle="tab" data-bs-target="#registrar"
+						role="tab">
+						Registrar Videojuegos
+					</button>
+				</li>
+				<li class="nav-item">
+					<button class="nav-link" id="mostrar-tab" data-bs-toggle="tab" data-bs-target="#mostrar" role="tab">
+						Mostrar Videojuegos
+					</button>
+				</li>
+			</ul>
+		</div>
 
-            <div class="tab-content">
-                <form method="post" class="col-md-6">
-                    <div class="mb-3">
-                        <label for="titulo" class="form-label">Titulo de Videojuego</label>
-												<input type="text" name="titulo" id="titulo" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label for="desarrolladores" class="form-label">Desarrolladores</label>
-												<select class="form-select" title="Choose an option">
-													<option>Apple</option>
-											</select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fechaLanzamiento" class="form-label">Fecha Lanzamiento</label>
-												<input type="date" name="fechaLanzamiento" id="fechaLanzamiento" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripcion de Videojugo</label>
-												<textarea name="descripcion" id="descripcion" class="form-control">
-												</textarea>
-                    </div>
-										<div class="mb-3">
-											<label for="esbrId" class="form-label">Esbr de Videojuego</label>
-											<select class="form-select" title="Choose an option">
-												<option>Apple</option>
-											</select>
-										</div>
-										<div class="mb-3">
-											<label for="precio" class="form-label">Precio de Videojuego</label>
-											<input type="number" name="precio" id="precio" class="form-control">
-										</div>
-										<div class="mb-3">
-											<label for="requisitos" class="form-label">Requisitos de Videojuego</label>
-											<textarea type="number" name="requisitos" id="requisitos" class="form-control">
-											</textarea>
-										</div>
-										<div class="mb-3">
-											<label class="form-label">Estado de Videojuego</label>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault1">
-												<label class="form-check-label" for="flexRadioDefault1">
-													Desactivar
-												</label>
-											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault2" checked>
-												<label class="form-check-label" for="flexRadioDefault2">
-													Activar
-												</label>
-											</div>
-										</div>
-										<div class="mb-3">
-											<label class="form-label" for="">Categorias de Videojuego:</label>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-												<label class="form-check-label" for="inlineCheckbox1">Accion</label>
-											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-												<label class="form-check-label" for="inlineCheckbox2">RPG</label>
-											</div>
-										</div>
-										<div class="mb-3">
-											<label class="form-label" for="">Plataformas de Videojuego:</label>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-												<label class="form-check-label" for="inlineCheckbox1">PC</label>
-											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-												<label class="form-check-label" for="inlineCheckbox2">PS5</label>
-											</div>
-										</div>
-										<div class="mb-3">
-											<label for="imagen" class="form-label">Imagen de Videojuego</label>
-											<input id="imagen" type="file" class="form-control">
-										</div>
-										<div class="mb-3">
-											<label for="trailer" class="form-label">Trailer de Videojuego</label>
-											<input id="trailer" type="text" class="form-control">
-										</div>
-                </form>
-            </div>
-        </div>  
-    </main>
-    <footer>
+		<div class="tab-content" id="myTabContent">
+			<!-- Agregar Videojuegos TAB -->
+			<div class="tab-pane fade shadow show active container" id="registrar" role="tabpanel">
+				<form class="col-md-6" id="formVideojuego">
+					<div class="mb-3">
+						<label for="titulo" class="form-label">Titulo de Videojuego</label>
+						<input type="text" name="titulo" id="titulo" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="desarrolladores" class="form-label">Desarrolladores</label>
+						<select class="form-select" title="Choose an option" name="desarrolladoresId">
+							<option value="1">Apple</option>
+							<option value="2">Prueba</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="fechaLanzamiento" class="form-label">Fecha Lanzamiento</label>
+						<input type="date" name="fechaLanzamiento" id="fechaLanzamiento" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="descripcion" class="form-label">Descripcion de Videojugo</label>
+						<textarea name="descripcion" id="descripcion" class="form-control"></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="esbrId" class="form-label">Esbr de Videojuego</label>
+						<select class="form-select" title="Choose an option" name="esbrId">
+							<option value="1">Apple</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="precio" class="form-label">Precio de Videojuego</label>
+						<input type="number" name="precio" id="precio" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="requisitos" class="form-label">Requisitos de Videojuego</label>
+						<textarea name="requisitos" id="requisitos" class="form-control"></textarea>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Estado de Videojuego</label>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault1"
+								value="false">
+							<label class="form-check-label" for="flexRadioDefault1">
+								Desactivar
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault2"
+								value="true" checked>
+							<label class="form-check-label" for="flexRadioDefault2">
+								Activar
+							</label>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Categorías de Videojuego:</label>
 
-    </footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox" name="categorias" id="inlineCheckbox1"
+								value="1">
+							<label class="form-check-label" for="inlineCheckbox1">Acción</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox" name="categorias" id="inlineCheckbox2"
+								value="2">
+							<label class="form-check-label" for="inlineCheckbox2">RPG</label>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Plataformas de Videojuego:</label>
+
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox" name="plataformas" id="inlineCheckbox1"
+								value="1">
+							<label class="form-check-label" for="inlineCheckbox1">Xbox</label>
+						</div>
+
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox" name="plataformas" id="inlineCheckbox2"
+								value="2">
+							<label class="form-check-label" for="inlineCheckbox2">PS5</label>
+						</div>
+					</div>
+					<div class="mb-3">
+						<label for="imagen" class="form-label">Imagen de Videojuego</label>
+						<input id="imagen" name="imagenFile" accept="image/*" type="file" class="form-control">
+					</div>
+					<div class="mb-3">
+						<label for="trailer" class="form-label">Trailer de Videojuego</label>
+						<input id="trailer" name="trailerUrl" type="text" class="form-control">
+					</div>
+					<div class="mb-3">
+						<input type="submit" value="Enviar" class="btn btn-success" id="btnEnviar">
+					</div>
+				</form>
+			</div>
+			<!-- FIN TAB -->
+
+			<div class="tab-pane fade" id="mostrar" role="tabpanel">
+
+
+				<div class="container py-5">
+
+					<div class="row">
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="lc-block bg-white rounded shadow"><img
+									src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?crop=entropy&amp;cs=tinysrgb&amp;fit=crop&amp;fm=jpg&amp;ixid=MnwzNzg0fDB8MXxzZWFyY2h8Mnx8Zm9yZXN0fGVufDB8MHx8fDE2MzQ5ODc4NTY&amp;ixlib=rb-1.2.1&amp;q=80&amp;w=1080&amp;h=768"
+									alt="Photo by Luca Bravo" class="img-fluid card-img-top"
+									sizes="(max-width: 1080px) 100vw, 1080px" width="1080" height="768" loading="lazy">
+								<div class="lc-block p-4">
+									<div editable="rich">
+										<h2>My Title</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit&nbsp;</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+
+			</div>
+		</div>
+
+	</div>
+	<footer>
+
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+	<script th:src="@{/scripts.js}"></script>
 </body>
+
 </html>
