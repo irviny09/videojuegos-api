@@ -8,6 +8,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 	<title>CRUD Videojuegos | API</title>
 </head>
+<style>
+</style>
 
 <body>
 	<header>
@@ -33,99 +35,127 @@
 		<div class="tab-content" id="myTabContent">
 			<!-- Agregar Videojuegos TAB -->
 			<div class="tab-pane fade shadow show active container" id="registrar" role="tabpanel">
-				<form class="col-md-6" id="formVideojuego">
-					<div class="mb-3">
-						<label for="titulo" class="form-label">Titulo de Videojuego</label>
-						<input type="text" name="titulo" id="titulo" class="form-control">
-					</div>
-					<div class="mb-3">
-						<label for="desarrolladores" class="form-label">Desarrolladores</label>
-						<select class="form-select" title="Choose an option" name="desarrolladoresId">
-							<option value="1">Apple</option>
-							<option value="2">Prueba</option>
-						</select>
-					</div>
-					<div class="mb-3">
-						<label for="fechaLanzamiento" class="form-label">Fecha Lanzamiento</label>
-						<input type="date" name="fechaLanzamiento" id="fechaLanzamiento" class="form-control">
-					</div>
-					<div class="mb-3">
-						<label for="descripcion" class="form-label">Descripcion de Videojugo</label>
-						<textarea name="descripcion" id="descripcion" class="form-control"></textarea>
-					</div>
-					<div class="mb-3">
-						<label for="esbrId" class="form-label">Esbr de Videojuego</label>
-						<select class="form-select" title="Choose an option" name="esbrId">
-							<option value="1">Apple</option>
-						</select>
-					</div>
-					<div class="mb-3">
-						<label for="precio" class="form-label">Precio de Videojuego</label>
-						<input type="number" name="precio" id="precio" class="form-control">
-					</div>
-					<div class="mb-3">
-						<label for="requisitos" class="form-label">Requisitos de Videojuego</label>
-						<textarea name="requisitos" id="requisitos" class="form-control"></textarea>
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Estado de Videojuego</label>
-						<div class="form-check">
-							<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault1"
-								value="false">
-							<label class="form-check-label" for="flexRadioDefault1">
-								Desactivar
-							</label>
+				<div class="d-flex justify-content-center">
+					<form class="col-md-6" id="formVideojuego">
+						<div class="mb-3">
+							<label for="titulo" class="form-label">Titulo de Videojuego</label>
+							<input type="text" name="titulo" id="titulo" class="form-control">
 						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault2"
-								value="true" checked>
-							<label class="form-check-label" for="flexRadioDefault2">
-								Activar
-							</label>
+						<div class="mb-3">
+							<label for="desarrolladores" class="form-label">Desarrolladores</label>
+							<select class="form-select" title="Choose an option" name="desarrolladoresId">
+								<option value="1">Apple</option>
+								<option value="2">Prueba</option>
+							</select>
 						</div>
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Categorías de Videojuego:</label>
+						<div class="mb-3">
+							<label for="fechaLanzamiento" class="form-label">Fecha Lanzamiento</label>
+							<input type="date" name="fechaLanzamiento" id="fechaLanzamiento" class="form-control">
+						</div>
+						<div class="mb-3">
+							<label for="descripcion" class="form-label">Descripcion de Videojugo</label>
+							<textarea name="descripcion" id="descripcion" class="form-control"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="esbrId" class="form-label">Esbr de Videojuego</label>
+							<select class="form-select" title="Choose an option" name="esbrId">
+								<option value="1">Apple</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label for="precio" class="form-label">Precio de Videojuego</label>
+							<input type="number" name="precio" id="precio" class="form-control">
+						</div>
+						<div class="mb-3">
+							<label for="requisitos" class="form-label">Requisitos de Videojuego</label>
+							<textarea name="requisitos" id="requisitos" class="form-control"></textarea>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Estado de Videojuego</label>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault1"
+									value="false">
+								<label class="form-check-label" for="flexRadioDefault1">
+									Desactivar
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault2"
+									value="true" checked>
+								<label class="form-check-label" for="flexRadioDefault2">
+									Activar
+								</label>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Categorías de Videojuego:</label>
 
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="checkbox" name="categorias" id="inlineCheckbox1"
-								value="1">
-							<label class="form-check-label" for="inlineCheckbox1">Acción</label>
-						</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" name="categorias" id="inlineCheckbox1"
+									value="1">
+								<label class="form-check-label" for="inlineCheckbox1">Acción</label>
+							</div>
 
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="checkbox" name="categorias" id="inlineCheckbox2"
-								value="2">
-							<label class="form-check-label" for="inlineCheckbox2">RPG</label>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" name="categorias" id="inlineCheckbox2"
+									value="2">
+								<label class="form-check-label" for="inlineCheckbox2">RPG</label>
+							</div>
 						</div>
-					</div>
-					<div class="mb-3">
-						<label class="form-label">Plataformas de Videojuego:</label>
+						<div class="mb-3">
+							<label class="form-label">Plataformas de Videojuego:</label>
 
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="checkbox" name="plataformas" id="inlineCheckbox1"
-								value="1">
-							<label class="form-check-label" for="inlineCheckbox1">Xbox</label>
-						</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" name="plataformas" id="inlineCheckbox1"
+									value="1">
+								<label class="form-check-label" for="inlineCheckbox1">Xbox</label>
+							</div>
 
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="checkbox" name="plataformas" id="inlineCheckbox2"
-								value="2">
-							<label class="form-check-label" for="inlineCheckbox2">PS5</label>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" name="plataformas" id="inlineCheckbox2"
+									value="2">
+								<label class="form-check-label" for="inlineCheckbox2">PS5</label>
+							</div>
+						</div>
+						<div class="col-12 mt-4 text-center">
+							<button type="submit" class="btn btn-primary my-5 px-7 justify-content-center" id="btnSiguiente">
+								Siguiente: Multimedia
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="modal fade" id="modalMultimedia" data-bs-backdrop="static" data-bs-keyboard="false"
+				tabindex="-1">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header bg-success text-white">
+							<h5 class="modal-title">Paso 2: Multimedia del Videojuego</h5>
+						</div>
+						<div class="modal-body">
+							<form id="formMultimedia">
+								<input type="hidden" id="videojuegoId">
+
+								<div class="mb-3">
+									<label for="imagenFile" class="form-label">Imagen de Portada (Obligatorio)</label>
+									<input id="imagenFile" type="file" class="form-control" accept="image/*" required>
+									<img id="preview" src="#" alt="Previsualización">
+								</div>
+
+								<div class="mb-3">
+									<label for="trailerUrl" class="form-label">URL del Tráiler</label>
+									<input id="trailerUrl" type="text" class="form-control"
+										placeholder="https://youtube.com/...">
+								</div>
+
+								<div class="d-grid gap-2">
+									<button type="submit" class="btn btn-success btn-lg">Finalizar Registro</button>
+								</div>
+							</form>
 						</div>
 					</div>
-					<div class="mb-3">
-						<label for="imagen" class="form-label">Imagen de Videojuego</label>
-						<input id="imagen" name="imagenFile" accept="image/*" type="file" class="form-control">
-					</div>
-					<div class="mb-3">
-						<label for="trailer" class="form-label">Trailer de Videojuego</label>
-						<input id="trailer" name="trailerUrl" type="text" class="form-control">
-					</div>
-					<div class="mb-3">
-						<input type="submit" value="Enviar" class="btn btn-success" id="btnEnviar">
-					</div>
-				</form>
+				</div>
 			</div>
 			<!-- FIN TAB -->
 

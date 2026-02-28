@@ -1,6 +1,5 @@
 package com.ubam.videojuegos_api.DTOs;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class DTOVideojuego {
     
@@ -14,22 +13,8 @@ public class DTOVideojuego {
         private Boolean activo;
         private String categorias;
         private String plataformas;
-        private MultipartFile imagenFile;
-        private String trailerUrl;
 
-    public DTOVideojuego(Boolean activo, String categorias, Integer desarrolladoresId, String descripcion, Integer esbrId, String fechaLanzamiento, MultipartFile imagenFile, String plataformas, Float precio, String requisitos, String titulo, String trailerUrl) {
-        this.activo = activo;
-        this.categorias = categorias;
-        this.desarrolladoresId = desarrolladoresId;
-        this.descripcion = descripcion;
-        this.esbrId = esbrId;
-        this.fechaLanzamiento = fechaLanzamiento;
-        this.imagenFile = imagenFile;
-        this.plataformas = plataformas;
-        this.precio = precio;
-        this.requisitos = requisitos;
-        this.titulo = titulo;
-        this.trailerUrl = trailerUrl;
+    public DTOVideojuego() {
     }
 
     public String getTitulo() {
@@ -111,24 +96,4 @@ public class DTOVideojuego {
     public void setPlataformas(String plataformas) {
         this.plataformas = plataformas;
     }
-
-    public MultipartFile getImagenFile() {
-        return imagenFile;
-    }
-
-    public void setImagenFile(MultipartFile imagenFile) {
-        this.imagenFile = imagenFile;
-    }
-
-    public String getTrailerUrl() {
-        return trailerUrl;
-    }
-
-    public void setTrailerUrl(String trailerUrl) {
-        this.trailerUrl = trailerUrl;
-    }
-
-    
-
-
 }
