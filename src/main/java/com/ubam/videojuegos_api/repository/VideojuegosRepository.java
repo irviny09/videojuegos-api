@@ -42,4 +42,12 @@ public interface VideojuegosRepository extends JpaRepository<Videojuegos, Intege
         @Param("url") String url, 
         @Param("trailer") String trailer
     );
+
+    @Query(value = "call sp_showGameById(:id)" , nativeQuery= true)
+    Map<String , Object> showGameById(@Param("id") Integer id);
+
+    @Query(value = "call sp_deleteGameById(:id)" , nativeQuery = true)
+    void sp_deleteGameById(
+        @Param("id") Integer id
+    );
 }

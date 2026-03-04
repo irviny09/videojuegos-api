@@ -74,7 +74,6 @@ public class ApiController {
         try {
             if (imagenFile.isEmpty()) return "Error: Archivo vacío";
 
-            // 1. Guardar el archivo físicamente
             String rutaCarpeta = System.getProperty("user.dir") + "/src/main/resources/static/uploads/";
             File carpeta = new File(rutaCarpeta);
             if(!carpeta.exists()) carpeta.mkdirs();
@@ -85,13 +84,22 @@ public class ApiController {
             Path rutaCompleta = Paths.get(rutaCarpeta + nombreArchivo);
             Files.write(rutaCompleta, imagenFile.getBytes());
 
-            // 2. Guardar la URL en la BD
             String urlImagen = "/uploads/" + nombreArchivo;
             videojuegosRepository.sp_updateGame_Multimedia(id, urlImagen, trailerUrl);
 
             return "Multimedia vinculada correctamente al juego #" + id;
         } catch (Exception e) {
             return "Error al subir multimedia: " + e.getMessage();
+        }
+    }
+
+    @PostMapping("/eliminar-videojuego")
+    public String eliminarVideojuego(@RequestBody int id) {
+        try {
+            videojuegosRepository.sp_deleteGameById(id);
+            return "Videojuego Eliminado Exitosamente";
+        } catch (Exception e) {
+            return "Error";
         }
     }
 }
