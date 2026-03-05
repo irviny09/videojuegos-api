@@ -22,61 +22,64 @@ import com.ubam.videojuegos_api.services.interfaces.IVideojuegoService;
 import jakarta.transaction.Transactional;
 
 @Service
-public class VideojuegoService implements IVideojuegoService{
-    
+public class VideojuegoService implements IVideojuegoService {
+
     @Autowired
     private VideojuegosRepository videojuegosRepository;
 
     @Override
-    public List<Map<String, Object>> mostrarVideojuegos(){
+    public List<Map<String, Object>> mostrarVideojuegos() {
         return videojuegosRepository.showAllGames();
     }
-    
+
     @Transactional
     @Override
     public ResponseEntity<?> agregarVideojuego(DTOVideojuego juegoDTO) {
         try {
             Date fecha = Date.valueOf(juegoDTO.getFechaLanzamiento());
-            
+
             Integer nuevoId = videojuegosRepository.sp_addGame_X_data(
-                juegoDTO.getTitulo(),
-                juegoDTO.getDesarrolladoresId(),
-                fecha,
-                juegoDTO.getDescripcion(),
-                juegoDTO.getEsbrId(),
-                juegoDTO.getPrecio(),
-                juegoDTO.getRequisitos(),
-                juegoDTO.getActivo(),
-                juegoDTO.getCategorias(),
-                juegoDTO.getPlataformas()
-            );
+                    juegoDTO.getTitulo(),
+                    juegoDTO.getDesarrolladoresId(),
+                    fecha,
+                    juegoDTO.getDescripcion(),
+                    juegoDTO.getEsbrId(),
+                    juegoDTO.getPrecio(),
+                    juegoDTO.getRequisitos(),
+                    juegoDTO.getActivo(),
+                    juegoDTO.getCategorias(),
+                    juegoDTO.getPlataformas());
 
             Map<String, Object> response = new HashMap<>();
             response.put("id", nuevoId);
             response.put("mensaje", "Registrado con éxito");
-
             return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().body("Error: " + e.getMessage());
-        }
+            } catch (Exception e) {
+                Map<String, Object> errorMap = new HashMap<>();
+                errorMap.put("mensaje", "Error en el servidor");
+                errorMap.put("detalle", e.getMessage());
+                return ResponseEntity.internalServerError().body(errorMap);
+            }
     }
 
     @Override
     public String subirMultimedia(
-        Integer id, 
-        MultipartFile imagenFile,
-        String trailerUrl
-    ) {
+            Integer id,
+            MultipartFile imagenFile,
+            String trailerUrl) {
         try {
-            if (imagenFile.isEmpty()) return "Error: Archivo vacío";
+            if (imagenFile.isEmpty())
+                return "Error: Archivo vacío";
 
             String rutaCarpeta = System.getProperty("user.dir") + "/src/main/resources/static/uploads/";
             File carpeta = new File(rutaCarpeta);
-            if(!carpeta.exists()) carpeta.mkdirs();
+            if (!carpeta.exists())
+                carpeta.mkdirs();
 
-            String extension = imagenFile.getOriginalFilename().substring(imagenFile.getOriginalFilename().lastIndexOf("."));
+            String extension = imagenFile.getOriginalFilename()
+                    .substring(imagenFile.getOriginalFilename().lastIndexOf("."));
             String nombreArchivo = System.currentTimeMillis() + "-img" + extension;
-            
+
             Path rutaCompleta = Paths.get(rutaCarpeta + nombreArchivo);
             Files.write(rutaCompleta, imagenFile.getBytes());
 
@@ -90,7 +93,7 @@ public class VideojuegoService implements IVideojuegoService{
     }
 
     @Override
-    public String eliminarVideojuego(Integer id){
+    public String eliminarVideojuego(Integer id) {
         try {
             videojuegosRepository.sp_deleteGameById(id);
             return "Videojuego Eliminado Exitosamente";

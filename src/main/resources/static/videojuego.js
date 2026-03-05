@@ -1,19 +1,48 @@
-const urlEliminar = "http://localhost:8080/api/eliminar-videojuego";
-const btnActualizar = document.getElementById("btnActualizar");
 const btnEliminar = document.getElementById("btnEliminar");
 
-btnEliminar.addEventListener('click', (e) => {
+btnEliminar.addEventListener('click', async (e) => { 
+    e.preventDefault();
+    
+    const inputId = document.getElementById("idVideojuego");
+    const VideojuegoId = inputId.value;
+
+    // Validación simple
+    if (!VideojuegoId) {
+        Swal.fire("Cuidado", "No hay un ID de videojuego válido", "info");
+        return;
+    }
+
+    const urlEliminar = `http://localhost:8080/api/eliminar-videojuego?id=${VideojuegoId}`;
+
     try {
-        let VideojuegoId = document.getElementById("idVideojuego").value;
-        const response = fetch(urlEliminar, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: { "id": VideojuegoId }
-        })
+        btnEliminar.disabled = true;
+
+        const response = await fetch(urlEliminar, { method: 'POST' });
+        console.log(response);
         if (response.ok) {
-            alert("Videojuego Eliminado Correctamente");
+            await Swal.fire({
+                title: "¡Eliminado!",
+                text: "El videojuego ha sido borrado correctamente.",
+                icon: "success",
+                confirmButtonColor: "#3085d6"
+            });
+            
+            window.location.href = "http://localhost:8080/"; 
+        } else {
+            const errorMsg = await response.text(); 
+            Swal.fire({
+                title: "Error",
+                text: "No se pudo eliminar: " + errorMsg,
+                icon: "error"
+            });
+            btnEliminar.disabled = false;
         }
     } catch (error) {
-        alert("Error: " + error.getMessage());
+        Swal.fire({
+            title: "Error de conexión",
+            text: "No se pudo contactar con el servidor.",
+            icon: "warning"
+        });
+        btnEliminar.disabled = false;
     }
 });

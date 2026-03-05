@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ubam.videojuegos_api.DTOs.DTOVideojuego;
 
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class ApiController {
@@ -30,10 +32,9 @@ public class ApiController {
     }
 
     @PostMapping("/agregar-videojuego")
-    public String agregarVideojuego(@RequestBody DTOVideojuego juegoDTO) {
+    public ResponseEntity<?> agregarVideojuego(@RequestBody DTOVideojuego juegoDTO) {
         try {
-            VideojuegoService.agregarVideojuego(juegoDTO);
-            return "Videojuego Agregado Correctamente";
+            return VideojuegoService.agregarVideojuego(juegoDTO);
         } catch (Exception e) {
             
             throw new RuntimeException("Error: " + e.getMessage());
@@ -55,7 +56,7 @@ public class ApiController {
     }
 
     @PostMapping("/eliminar-videojuego")
-    public String eliminarVideojuego(@RequestBody int id) {
+    public String eliminarVideojuego(@RequestParam int id) {
         try {
             VideojuegoService.eliminarVideojuego(id);
             return "Videojuego Eliminado Exitosamente";

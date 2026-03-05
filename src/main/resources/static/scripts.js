@@ -8,7 +8,6 @@ document.getElementById('formVideojuego').addEventListener('submit', async (e) =
     e.preventDefault();
     const btn = document.getElementById('btnSiguiente');
     btn.disabled = true;
-    btn.innerText = "Procesando...";
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
@@ -24,8 +23,17 @@ document.getElementById('formVideojuego').addEventListener('submit', async (e) =
             body: JSON.stringify(data)
         });
 
-        const result = await response.json();
+        const contentType = response.headers.get("content-type");
+        let result;
 
+        if (contentType && contentType.includes("application/json")) {
+            result = await response.json();
+        } else {
+            const text = await response.text();
+            result = { mensaje: text, id: null };
+
+        }
+        console.log(response);
         if (response.ok && result.id) {
             document.getElementById('videojuegoId').value = result.id;
             const modal = new bootstrap.Modal(document.getElementById('modalMultimedia'));
@@ -78,8 +86,8 @@ btnMostrar.addEventListener('click', async (e) => {
             videojuegos = data;
         });
 
-        videojuegos.forEach(videojuego => {
-            galeryVideojuegos.innerHTML += `
+    videojuegos.forEach(videojuego => {
+        galeryVideojuegos.innerHTML += `
                 <a class="card-body" href="http://localhost:8080/videojuego/${videojuego.VideojuegosId}">
                     <div class="lc-block bg-white rounded shadow card">
                         <img src="${videojuego.Multimedia_ImagenURL}"
@@ -95,7 +103,7 @@ btnMostrar.addEventListener('click', async (e) => {
                         </div>
                 </a>
             `;
-        });
+    });
 
     console.log(videojuegos);
 
