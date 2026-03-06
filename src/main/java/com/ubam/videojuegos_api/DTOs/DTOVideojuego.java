@@ -13,6 +13,7 @@ public class DTOVideojuego {
         private Boolean activo;
         private String categorias;
         private String plataformas;
+        private int stock;
 
     public DTOVideojuego() {
     }
@@ -95,5 +96,13 @@ public class DTOVideojuego {
 
     public void setPlataformas(String plataformas) {
         this.plataformas = plataformas;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

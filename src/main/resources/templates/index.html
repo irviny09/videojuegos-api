@@ -68,10 +68,13 @@
 							<input type="text" name="titulo" id="titulo" class="form-control">
 						</div>
 						<div class="mb-3">
+							<label for="stock" class="form-label">Stock de Videojuego</label>
+							<input type="number" name="stock" id="stock" class="form-control" step="0.01">
+						</div>
+						<div class="mb-3">
 							<label for="desarrolladores" class="form-label">Desarrolladores</label>
-							<select class="form-select" title="Choose an option" name="desarrolladoresId">
-								<option value="1">Apple</option>
-								<option value="2">Prueba</option>
+							<select class="form-select" title="Choose an option" name="desarrolladoresId" id="Desarrolladores">
+								<option value="-1" disabled selected>--Selecciona Desarrolladores--</option>
 							</select>
 						</div>
 						<div class="mb-3">
@@ -84,13 +87,13 @@
 						</div>
 						<div class="mb-3">
 							<label for="esbrId" class="form-label">Esbr de Videojuego</label>
-							<select class="form-select" title="Choose an option" name="esbrId">
-								<option value="1">Apple</option>
+							<select class="form-select" title="Choose an option" name="esbrId" id="Esbr">
+								<option value="-1" disabled selected>--Selecciona el ESBR--</option>
 							</select>
 						</div>
 						<div class="mb-3">
 							<label for="precio" class="form-label">Precio de Videojuego</label>
-							<input type="number" name="precio" id="precio" class="form-control">
+							<input type="number" name="precio" id="precio" class="form-control" step="0.01">
 						</div>
 						<div class="mb-3">
 							<label for="requisitos" class="form-label">Requisitos de Videojuego</label>
@@ -113,22 +116,11 @@
 								</label>
 							</div>
 						</div>
-						<div class="mb-3">
+						<div class="mb-3" id="Categorias">
 							<label class="form-label">Categorías de Videojuego:</label>
 
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="checkbox" name="categorias" id="inlineCheckbox1"
-									value="1">
-								<label class="form-check-label" for="inlineCheckbox1">Acción</label>
-							</div>
-
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="checkbox" name="categorias" id="inlineCheckbox2"
-									value="2">
-								<label class="form-check-label" for="inlineCheckbox2">RPG</label>
-							</div>
 						</div>
-						<div class="mb-3">
+						<div class="mb-3" id="Plataformas">
 							<label class="form-label">Plataformas de Videojuego:</label>
 
 							<div class="form-check form-check-inline">
@@ -173,6 +165,12 @@
 								<div class="mb-3">
 									<label for="trailerUrl" class="form-label">URL del Tráiler</label>
 									<input id="trailerUrl" type="text" class="form-control"
+										placeholder="https://youtube.com/...">
+								</div>
+
+								<div class="mb-3">
+									<label for="demoUrl" class="form-label">URL del Demo</label>
+									<input id="demoUrl" type="text" class="form-control"
 										placeholder="https://youtube.com/...">
 								</div>
 

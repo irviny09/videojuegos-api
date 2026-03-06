@@ -18,4 +18,20 @@ public class Esbr {
 
     @Column(name = "Esbr_Esbr", length = 45, nullable = false)
     private String esbr;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEsbr() {
+        return esbr;
+    }
+
+    public void setEsbr(String esbr) {
+        this.esbr = esbr;
+    }
 }

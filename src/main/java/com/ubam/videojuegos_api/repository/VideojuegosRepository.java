@@ -19,6 +19,9 @@ public interface VideojuegosRepository extends JpaRepository<Videojuegos, Intege
     @Query(value = "call sp_showAllGames()", nativeQuery = true)
     List<Map<String, Object>> showAllGames();
 
+    @Query(value = "call sp_showMultimedia()", nativeQuery = true)
+    List<Map<String, Object>> showMultimedia();
+
     @Transactional
     @Query(value = "CALL sp_addGame_X_data(:_titulo, :_desarrolladoresId, :_fechaLanzamiento, :_descripcion, :_esbrId, :_precio, :_requisitos, :_activo, :_categorias, :_plataformas)", nativeQuery = true)
     int sp_addGame_X_data(
@@ -31,16 +34,18 @@ public interface VideojuegosRepository extends JpaRepository<Videojuegos, Intege
         @Param("_requisitos") String requisitos,
         @Param("_activo") boolean activo,
         @Param("_categorias") String categorias,
-        @Param("_plataformas") String plataformas
+        @Param("_plataformas") String plataformas,
+        @Param("_stock") int stock
     );
 
     @Transactional
     @Modifying
-    @Query(value = "CALL sp_updateMultimediaGame(:id, :url, :trailer)", nativeQuery = true)
+    @Query(value = "CALL sp_updateMultimediaGame(:id, :url, :trailer, :demo)", nativeQuery = true)
     void sp_updateGame_Multimedia(
         @Param("id") Integer id, 
         @Param("url") String url, 
-        @Param("trailer") String trailer
+        @Param("trailer") String trailer,
+        @Param("demo") String demo
     );
 
     @Query(value = "call sp_showGameById(:id)" , nativeQuery= true)
