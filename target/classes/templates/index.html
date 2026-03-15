@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+	<title>CRUD Videojuegos | API</title>
+</head>
+<style>
+	#galeryVideojuegos {
+		display: grid;
+		grid-template-columns: repeat(4, 300px);
+		gap: 40px;
+
+	}
+
+	.card {
+		transition: all .3s;
+	}
+
+	.card:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 10px 20px rgba(0, 0, 0, .12);
+		cursor: pointer;
+	}
+
+	.card-body a {
+		color: #212529;
+		text-decoration: none !important;
+	}
+
+	.card-body a:hover {
+		color: #0d6efd;
+		text-decoration: underline;
+	}
+</style>
+
+<body>
+	<header>
+
+	</header>
+	<div class="container py-5">
+		<div class="dashboard-wrapper">
+			<ul class="nav nav-tabs mb-4" id="Mytabs" role="tablist">
+				<li class="nav-item" role="presentation">
+					<button class="nav-link active" id="registrar-tab" data-bs-toggle="tab" data-bs-target="#registrar"
+						role="tab">
+						Registrar Videojuegos
+					</button>
+				</li>
+				<li class="nav-item">
+					<button class="nav-link" id="mostrar-tab" data-bs-toggle="tab" data-bs-target="#mostrar" role="tab">
+						Mostrar Videojuegos
+					</button>
+				</li>
+			</ul>
+		</div>
+
+		<div class="tab-content" id="myTabContent">
+			<!-- Agregar Videojuegos TAB -->
+			<div class="tab-pane fade shadow show active container" id="registrar" role="tabpanel">
+				<div class="d-flex justify-content-center">
+					<form class="col-md-6" id="formVideojuego">
+						<div class="mb-3">
+							<label for="titulo" class="form-label">Titulo de Videojuego</label>
+							<input type="text" name="titulo" id="titulo" class="form-control">
+						</div>
+						<div class="mb-3">
+							<label for="stock" class="form-label">Stock de Videojuego</label>
+							<input type="number" name="stock" id="stock" class="form-control" step="0.01">
+						</div>
+						<div class="mb-3">
+							<label for="desarrolladores" class="form-label">Desarrolladores</label>
+							<select class="form-select" title="Choose an option" name="desarrolladoresId" id="Desarrolladores">
+								<option value="-1" disabled selected>--Selecciona Desarrolladores--</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label for="fechaLanzamiento" class="form-label">Fecha Lanzamiento</label>
+							<input type="date" name="fechaLanzamiento" id="fechaLanzamiento" class="form-control">
+						</div>
+						<div class="mb-3">
+							<label for="descripcion" class="form-label">Descripcion de Videojugo</label>
+							<textarea name="descripcion" id="descripcion" class="form-control"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="esbrId" class="form-label">Esbr de Videojuego</label>
+							<select class="form-select" title="Choose an option" name="esbrId" id="Esbr">
+								<option value="-1" disabled selected>--Selecciona el ESBR--</option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label for="precio" class="form-label">Precio de Videojuego</label>
+							<input type="number" name="precio" id="precio" class="form-control" step="0.01">
+						</div>
+						<div class="mb-3">
+							<label for="requisitos" class="form-label">Requisitos de Videojuego</label>
+							<textarea name="requisitos" id="requisitos" class="form-control"></textarea>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Estado de Videojuego</label>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault1"
+									value="false">
+								<label class="form-check-label" for="flexRadioDefault1">
+									Desactivar
+								</label>
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="activo" id="flexRadioDefault2"
+									value="true" checked>
+								<label class="form-check-label" for="flexRadioDefault2">
+									Activar
+								</label>
+							</div>
+						</div>
+						<div class="mb-3" id="Categorias">
+							<label class="form-label">Categorías de Videojuego:</label>
+
+						</div>
+						<div class="mb-3" id="Plataformas">
+							<label class="form-label">Plataformas de Videojuego:</label>
+
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" name="plataformas" id="inlineCheckbox1"
+									value="1">
+								<label class="form-check-label" for="inlineCheckbox1">Xbox</label>
+							</div>
+
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" name="plataformas" id="inlineCheckbox2"
+									value="2">
+								<label class="form-check-label" for="inlineCheckbox2">PS5</label>
+							</div>
+						</div>
+						<div class="col-12 mt-4 text-center">
+							<button type="submit" class="btn btn-primary my-5 px-7 justify-content-center"
+								id="btnSiguiente">
+								Siguiente: Multimedia
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="modal fade" id="modalMultimedia" data-bs-backdrop="static" data-bs-keyboard="false"
+				tabindex="-1">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header bg-success text-white">
+							<h5 class="modal-title">Paso 2: Multimedia del Videojuego</h5>
+						</div>
+						<div class="modal-body">
+							<form id="formMultimedia">
+								<input type="hidden" id="videojuegoId">
+
+								<div class="mb-3">
+									<label for="imagenFile" class="form-label">Imagen de Portada (Obligatorio)</label>
+									<input id="imagenFile" type="file" class="form-control" accept="image/*" required>
+									<img id="preview" src="#" alt="Previsualización">
+								</div>
+
+								<div class="mb-3">
+									<label for="trailerUrl" class="form-label">URL del Tráiler</label>
+									<input id="trailerUrl" type="text" class="form-control"
+										placeholder="https://youtube.com/...">
+								</div>
+
+								<div class="mb-3">
+									<label for="demoUrl" class="form-label">URL del Demo</label>
+									<input id="demoUrl" type="text" class="form-control"
+										placeholder="https://youtube.com/...">
+								</div>
+
+								<div class="d-grid gap-2">
+									<button type="submit" class="btn btn-success btn-lg">Finalizar Registro</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN TAB -->
+
+			<div class="tab-pane fade" id="mostrar" role="tabpanel">
+
+
+				<div class="container py-5" id="galeryVideojuegos">
+
+
+
+
+
+				</div>
+
+
+			</div>
+		</div>
+
+	</div>
+	<footer>
+
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+	<script th:src="@{/scripts.js}"></script>
+</body>
+
+</html>
