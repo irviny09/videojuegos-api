@@ -164,7 +164,4 @@ btnMostrar.addEventListener('click', async (e) => {
                 </a>
             `;
     });
-
-    console.log(videojuegos);
-
 });
