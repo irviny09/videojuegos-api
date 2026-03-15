@@ -22,4 +22,7 @@ public class Multimedia {
     @Column(name = "Multimedia_TrailerURL", length = 200, nullable = false)
     private String trailerUrl;
 
+    @Column(name = "Multimedia_DemoURL", length = 200, nullable = false)
+    private String demoUrl;
+
 }

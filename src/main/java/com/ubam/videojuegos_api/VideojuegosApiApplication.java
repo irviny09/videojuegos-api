@@ -1,5 +1,6 @@
 package com.ubam.videojuegos_api;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
