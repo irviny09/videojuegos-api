@@ -1,10 +1,10 @@
-const urlAgregar = "http://localhost:8080/api/agregar-videojuego";
-const urlMostrar = "http://localhost:8080/api/mostrar-videojuegos"
-const urlAgregarMultimedia = "http://localhost:8080/api/subir-multimedia";
-const urlEsbr = "http://localhost:8080/api/mostrar-esbr";
-const urlCategorias = "http://localhost:8080/api/mostrar-categorias";
-const urlPlataformas = "http://localhost:8080/api/mostrar-plataformas";
-const urlDesarrolladores = "http://localhost:8080/api/mostrar-desarrolladores";
+const urlAgregar = "/api/agregar-videojuego";
+const urlMostrar = "/api/mostrar-videojuegos"
+const urlAgregarMultimedia = "/api/subir-multimedia";
+const urlEsbr = "/api/mostrar-esbr";
+const urlCategorias = "/api/mostrar-categorias";
+const urlPlataformas = "/api/mostrar-plataformas";
+const urlDesarrolladores = "/api/mostrar-desarrolladores";
 const sectionMostrar = document.getElementById("mostrar");
 const btnMostrar = document.getElementById("mostrar-tab");
 

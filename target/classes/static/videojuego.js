@@ -12,7 +12,7 @@ btnEliminar.addEventListener('click', async (e) => {
         return;
     }
 
-    const urlEliminar = `http://localhost:8080/api/eliminar-videojuego?id=${VideojuegoId}`;
+    const urlEliminar = `/api/eliminar-videojuego?id=${VideojuegoId}`;
 
     try {
         btnEliminar.disabled = true;
@@ -27,7 +27,7 @@ btnEliminar.addEventListener('click', async (e) => {
                 confirmButtonColor: "#3085d6"
             });
             
-            window.location.href = "http://localhost:8080/"; 
+            window.location.href = "/"; 
         } else {
             const errorMsg = await response.text(); 
             Swal.fire({
